@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="{{ url_for('static', filename='style.css') }}?3" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename='music.css') }}" type="text/css" rel="stylesheet">
+        <title>Music Archive</title>
+        <link rel="icon" href="{{ url_for('static', filename='Assets/favicon.png') }}">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.min.js" integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script src="{{ url_for('static', filename='album.js') }}?1"></script>
+    </head>
+    <body>
+        <div id="title"><h1><a href="/"><img class="logo" src="{{ url_for('static', filename='Assets/logo.png') }}"></a><em class="titleText">patialflunky1</em></h1></div>
+        <div id="container">
+            <div id="topnav">
+                <h1><em><a id="music_back" href="/Music">Music Archive</a></em></h1>
+            </div>
+        </div>
+        <table id="content">
+        </table>
+    </body>
+</html>
