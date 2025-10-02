@@ -79,4 +79,4 @@ def handle_connection(page):
         send(github.get_repo_names())
 
 if __name__ == '__main__':
-    socketio.run(app, host="192.168.68.119", port=500, debug=True)
+    socketio.run(app, host="localhost", port=500, debug=True)
