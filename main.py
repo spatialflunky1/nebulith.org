@@ -1,3 +1,7 @@
+# Required
+import eventlet
+eventlet.patcher.monkey_patch(select=True, socket=True)
+
 from flask import Flask, render_template
 from flask_socketio import SocketIO, send
 from flask_minify import Minify
