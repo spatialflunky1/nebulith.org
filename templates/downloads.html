@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="{{ url_for('static', filename='style.css') }}?3" rel="stylesheet" type="text/css">
 	<title>Download Page</title>
-	<link rel="icon" href="{{ url_for('static', filename='Assets/favicon.png') }}">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.min.js" integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        {% include 'head.html' %}
+        {% include 'flask.html' %}
 	<script src="{{  url_for('static', filename='downloads.js') }}"></script>
 </head>
   <body>

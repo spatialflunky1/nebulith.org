@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="{{ url_for('static', filename='style.css') }}?3" rel="stylesheet" type="text/css">
         <title>A Flunky Homapage</title>
-        <meta content="My Page :)" property="og:title" />
-        <meta content="Cool website for cool people only. (DO NOT LOAD PAGE IF NOT COOL!!!)" property="og:description" />
-        <meta content="https://nebulith.org" property="og:url" />
-        <meta content="{{ url_for('static', filename='Assets/logo.png') }}" property="og:image" />
-        <meta content="#00CCFB" data-react-helmet="true" name="theme-color" />
-        <link rel="icon" href="{{ url_for('static', filename='Assets/favicon.png') }}">
+        {% include 'head.html' %}
     </head>
     <body>
         <div id="title"><h1><a href="/"><img class="logo" alt="Spatialflunky1 logo" src="{{ url_for('static', filename='Assets/logo.png') }}"></a><em class="titleText">patialflunky1</em></h1></div>
