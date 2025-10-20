@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        {% include 'head.html' %}
+        {% include 'flask.html' %}
         <title>Music Archive</title>
         <link href="{{ url_for('static', filename='music.css') }}" type="text/css" rel="stylesheet">
         <script src="{{ url_for('static', filename='album.js') }}?1"></script>
-        {% include 'head.html' %}
-        {% include 'flask.html' %}
     </head>
     <body>
         <div id="title"><h1><a href="/"><img class="logo" src="{{ url_for('static', filename='Assets/logo.png') }}"></a><em class="titleText">patialflunky1</em></h1></div>
