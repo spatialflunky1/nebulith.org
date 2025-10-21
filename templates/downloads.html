@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Download Page</title>
+    <head>
         {% include 'head.html' %}
         {% include 'flask.html' %}
+	<title>Download Page</title>
 	<script src="{{  url_for('static', filename='downloads.js') }}"></script>
-</head>
-  <body>
-	<div id="title"><h1><a href="/"><img class="logo" src="{{ url_for('static', filename='Assets/logo.png') }}"></a><em class="titleText">patialflunky1</em></h1></div>
-	<div id="container">
-		<div id="topnav">
-			<h1><em>Downloads</em></h1>
-		</div>
-	</div>
-	<div id="sidebar">
-		<br>
-		<table id="sidebar_table"></table>
-	</div>
-  </body>
+    </head>
+    <body>
+        {% include 'navigation_bar.html' %}
+        <div id="sidebar">
+            <br>
+            <table id="sidebar_table"></table>
+        </div>
+        {% include 'footer.html' %}
+    </body>
 </html>
