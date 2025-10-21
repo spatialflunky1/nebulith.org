@@ -56,3 +56,12 @@ body {
     padding-right: 10px;
     padding-left: 10px;
 }
+
+#footer {
+    border-color: #777788;
+    border-width: 1px 0 0;
+    border-style: solid;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
