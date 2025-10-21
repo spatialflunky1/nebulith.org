@@ -33,6 +33,14 @@ body {
     width: 100%;
 }
 
+#title {
+    padding-right: 16px;
+}
+
+#title, #breadcrumb p {
+    margin-left: 8px;
+}
+
 #breadcrumb {
     border-color: #777788;
     border-width: 0 0 1px;
