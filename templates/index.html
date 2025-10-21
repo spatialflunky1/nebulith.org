@@ -5,12 +5,9 @@
         {% include 'head.html' %}
     </head>
     <body>
-        <div id="title"><h1><a href="/"><img class="logo" alt="Spatialflunky1 logo" src="{{ url_for('static', filename='Assets/logo.png') }}"></a><em class="titleText">patialflunky1</em></h1></div>
-        <div id="container">
-            <div id="topnav">
-                <h1><em>Homepage</em></h1>
-            </div>
-        </div> 
+        {% include 'navigation_bar.html' %}
+        <div></div>
+        {% include 'footer.html' %}
         <div id="sidebar">
             <br>
             <table id="sidebar_table">
