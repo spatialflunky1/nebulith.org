@@ -29,10 +29,22 @@ body {
     border-color: #777788;
     border-width: 0 0 1px;
     border-style: solid;
+    display: inline-flex;
+    width: 100%;
 }
 
 #breadcrumb {
     border-color: #777788;
     border-width: 0 0 1px;
     border-style: solid;
+}
+
+#subpages {
+    display: inline-flex;
+    align-items: center;
+}
+
+#subpages a {
+    padding-right: 10px;
+    padding-left: 10px;
 }
