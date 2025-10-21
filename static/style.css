@@ -3,6 +3,14 @@ p {
 }
 
 a {
+    color: #F60;
+}
+
+a:hover {
+    color: #FC0;
+}
+
+#navibar a {
     color: #CFDFFC;
 }
 
