@@ -31,7 +31,7 @@ body {
 
 #navibar {
     width: 100%;
-    background-image: url("/static/Assets/background.png");
+    background-image: url("/static/Assets/background-navibar.png");
 }
 
 #uppernav {
@@ -73,5 +73,5 @@ body {
     position: absolute;
     width: 100%;
     bottom: 0;
-    background-image: url("/static/Assets/background.png");
+    background-image: url("/static/Assets/background-footer.png");
 }
