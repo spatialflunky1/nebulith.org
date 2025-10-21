@@ -163,3 +163,8 @@ th {
 #slidecontainer, #volume {
     width: 200px;
 }
+
+#container {
+    width: fit-content;
+    margin: auto;
+}
