@@ -22,9 +22,21 @@ def home():
 def downloads():
     return render_template("downloads.html")
 
+@app.route("/IRC", methods=["GET", "POST"])
+def IRC():
+    return render_template("irc.html")
+
 @app.route("/Blog", methods=["GET", "POST"])
 def blog():
     return render_template("blog.html")
+
+@app.route("/Forum", methods=["GET", "POST"])
+def forum():
+    return render_template("forum.html")
+
+@app.route("/Login", methods=["GET", "POST"])
+def login():
+    return render_template("login.html")
 
 @app.route("/Music", methods=["GET", "POST"])
 def music():
