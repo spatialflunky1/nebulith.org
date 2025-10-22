@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="{{ url_for('static', filename='downloads.css') }}" rel="stylesheet" type="text/css">
         {% include 'head.html' %}
         {% include 'flask.html' %}
 	<title>Download Page</title>
@@ -9,7 +10,7 @@
     <body>
         {% include 'navigation_bar.html' %}
         <div id="body">
-            <table id="sidebar_table"></table>
+            <table id="download_table"></table>
         </div>
         {% include 'footer.html' %}
     </body>
