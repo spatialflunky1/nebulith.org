@@ -74,9 +74,14 @@ body {
     border-style: solid;
 }
 
-#subpages {
+#subpages, #login {
     display: inline-flex;
     align-items: center;
+}
+
+#login {
+    margin-left: auto;
+    padding-right: 8px;
 }
 
 #subpages a {
