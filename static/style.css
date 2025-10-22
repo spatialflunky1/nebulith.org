@@ -52,10 +52,6 @@ body {
     width: 100%;
 }
 
-#title {
-    padding-right: 16px;
-}
-
 #title, #breadcrumb p, #body, #left-foot {
     margin-left: 8px;
 }
@@ -72,8 +68,7 @@ body {
 }
 
 #subpages a {
-    padding-right: 10px;
-    padding-left: 10px;
+    padding: 15px;
 }
 
 #footer {
