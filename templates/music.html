@@ -8,12 +8,8 @@
         <link href="{{ url_for('static', filename='music.css') }}" type="text/css" rel="stylesheet">
     </head>
     <body id="music">
-        <div id="title"><h1><a href="/"><img class="logo" src="{{ url_for('static', filename='Assets/logo.png') }}"></a><em class="titleText">patialflunky1</em></h1></div>
-        <div id="container">
-            <div id="topnav">
-                <h1><em><a id="music_back" href="/Music">Music Archive</a></em></h1>
-            </div>
-        </div>
+        {% include 'navigation_bar.html' %}
         <table id="content"></table>
+        {% include 'footer.html' %}
     </body>
 </html>
