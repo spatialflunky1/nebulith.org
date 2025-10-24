@@ -19,7 +19,7 @@ Minify(app=app, html=True, js=True, cssless=True)
 
 # Mock user DB
 # TODO: REMOVE THIS IMMEDIATELY
-users = {"a@example.com": {"password": "123"}}
+users = {"a@example.com": {"username": "Jake", "password": "123"}}
 
 # Define empty class to store user information at runtime
 class User(flask_login.UserMixin):
@@ -32,6 +32,7 @@ def user_loader(email):
         return
     user = User()
     user.id = email
+    user.name = users[email]["username"]
     return user
 
 @login_manager.request_loader
@@ -41,6 +42,7 @@ def request_loader(request):
         return
     user = User()
     user.id = email
+    user.name = users[email]["username"]
     return user
 
 @login_manager.unauthorized_handler

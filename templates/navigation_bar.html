@@ -12,8 +12,8 @@
             <a href="https://www.youtube.com/c/spatialflunky1">YouTube</a>
         </div>
         <div id="login_nav">
-            {% if current_user.id %}
-            <a>{{ current_user.id }}</a>
+            {% if current_user.name %}
+            <a>{{ current_user.name }}</a>
             {% else %}
             <a href="/Login">Login</a>
             {% endif %}
