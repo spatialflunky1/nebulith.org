@@ -74,12 +74,12 @@ body {
     border-style: solid;
 }
 
-#subpages, #login {
+#subpages, #login_nav {
     display: inline-flex;
     align-items: center;
 }
 
-#login {
+#login_nav {
     margin-left: auto;
     padding-right: 8px;
 }
@@ -95,6 +95,7 @@ body {
     position: absolute;
     width: 100%;
     bottom: 0;
+    left: 0;
     background-image: url("/static/Assets/background-footer.png");
     display: inline-flex;
     height: 140px;

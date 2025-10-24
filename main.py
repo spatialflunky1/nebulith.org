@@ -2,54 +2,104 @@
 import eventlet
 eventlet.patcher.monkey_patch(select=True, socket=True)
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from flask_socketio import SocketIO, send
 from flask_minify import Minify
+import flask_login
 import os
 import github
 from mutagen import mp3, File
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret!'
+app.config['SECRET_KEY'] = 'f203f9m20doimpaops&*(@MD'
+login_manager = flask_login.LoginManager()
+login_manager.init_app(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 Minify(app=app, html=True, js=True, cssless=True)
 
-@app.route("/", methods=["GET", "POST"])
-def home():
-    return render_template("index.html")
+# Mock user DB
+# TODO: REMOVE THIS IMMEDIATELY
+users = {"a@example.com": {"password": "123"}}
 
-@app.route("/Downloads", methods=["GET", "POST"])
-def downloads():
-    return render_template("downloads.html")
+# Define empty class to store user information at runtime
+class User(flask_login.UserMixin):
+    pass
 
-@app.route("/IRC", methods=["GET", "POST"])
-def IRC():
-    return render_template("irc.html")
+# Define login manager functions and login route
+@login_manager.user_loader
+def user_loader(email):
+    if email not in users:
+        return
+    user = User()
+    user.id = email
+    return user
 
-@app.route("/Blog", methods=["GET", "POST"])
-def blog():
-    return render_template("blog.html")
+@login_manager.request_loader
+def request_loader(request):
+    email = request.form.get('email')
+    if email not in users:
+        return
+    user = User()
+    user.id = email
+    return user
 
-@app.route("/Forum", methods=["GET", "POST"])
-def forum():
-    return render_template("forum.html")
+@login_manager.unauthorized_handler
+def unauthorized_handler():
+    return render_template("error.html", error_num="401", error="Unauthorized", current_user=flask_login.current_user)
 
 @app.route("/Login", methods=["GET", "POST"])
 def login():
-    return render_template("login.html")
+    if request.method == "GET":
+        return render_template("login.html", current_user=flask_login.current_user)
+    else:
+        email = request.form["email"]
+        if email in users and request.form["password"] == users[email]["password"]:
+            user = User()
+            user.id = email
+            flask_login.login_user(user)
+            return redirect("/")
+        else:
+            return render_template("login.html", error="Incorrect email or password!", current_user=flask_login.current_user)
+
+@app.route("/Logout", methods=["GET"])
+def logout():
+    flask_login.logout_user()
+    return redirect("/")
+
+# Set default routes
+@app.route("/", methods=["GET", "POST"])
+def home():
+    return render_template("index.html", current_user=flask_login.current_user)
+
+@app.route("/Downloads", methods=["GET", "POST"])
+def downloads():
+    return render_template("downloads.html", current_user=flask_login.current_user)
+
+@app.route("/IRC", methods=["GET", "POST"])
+def IRC():
+    return render_template("irc.html", current_user=flask_login.current_user)
+
+@app.route("/Blog", methods=["GET", "POST"])
+def blog():
+    return render_template("blog.html", current_user=flask_login.current_user)
+
+@app.route("/Forum", methods=["GET", "POST"])
+def forum():
+    return render_template("forum.html", current_user=flask_login.current_user)
 
 @app.route("/Music", methods=["GET", "POST"])
 def music():
-    return render_template("music.html")
+    return render_template("music.html", current_user=flask_login.current_user)
 
 @app.route("/Music/Albums", methods=["GET", "POST"])
 def albums():
-    return render_template("albums.html")
+    return render_template("albums.html", current_user=flask_login.current_user)
 
 @app.route("/Music/Songs", methods=["GET", "POST"])
 def songs():
-    return render_template("songs.html")
+    return render_template("songs.html", current_user=flask_login.current_user)
 
+# Dynamic SocketIO content
 @socketio.on('message', namespace="/")
 def handle_connection(page):
     print(page)
