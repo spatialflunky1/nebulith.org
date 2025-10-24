@@ -10,9 +10,9 @@ It was apparent that development on the old spatialflunky.one had stagnated and 
 - [x] Redesign and implement new theme based on the old (no longer used) space age theme from winworldpc.com
   - Theme can be viewed [here](https://web.archive.org/web/20160313224804/https://winworldpc.com/)
   - New layout will have an actual header and footer for a more standardized organization
+- [ ] Research and design a system for user and admin accounts over Python Flask, mainly for the features below
 - [ ] Create about page
 - [ ] Completely rework "downloads" page
-- [ ] Research and design a system for user and admin accounts over Python Flask, mainly for the features below
 - [ ] Create forum
 - [ ] Create blog
 - [ ] Create IRC
