@@ -14,12 +14,7 @@
         <link rel="preload" href="../../static/Assets/indicator_unpressed.png" as="image">
     </head>
     <body>
-        <div id="title"><h1><a href="/"><img class="logo" src="{{ url_for('static', filename='Assets/logo.png') }}"></a><em class="titleText">patialflunky1</em></h1></div>
-        <div id="container">
-            <div id="topnav">
-                <h1><em><a id="music_back" href="/Music">Music Archive</a></em></h1>
-            </div>
-        </div>
+        {% include 'navigation_bar.html' %}
         <table id="songList">
             <tr><th>Song</th><th>Artist</th><th>Length</th></tr>
         </table>
@@ -36,5 +31,6 @@
                 </div>
             </div>
         </div>
+        {% include 'footer.html' %}
     </body>
 </html>
