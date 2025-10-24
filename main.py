@@ -76,6 +76,7 @@ def downloads():
     return render_template("downloads.html", current_user=flask_login.current_user)
 
 @app.route("/IRC", methods=["GET"])
+@flask_login.login_required
 def IRC():
     return render_template("irc.html", current_user=flask_login.current_user)
 
@@ -88,14 +89,17 @@ def forum():
     return render_template("forum.html", current_user=flask_login.current_user)
 
 @app.route("/Music", methods=["GET"])
+@flask_login.login_required
 def music():
     return render_template("music.html", current_user=flask_login.current_user)
 
 @app.route("/Music/Albums", methods=["GET"])
+@flask_login.login_required
 def albums():
     return render_template("albums.html", current_user=flask_login.current_user)
 
 @app.route("/Music/Songs", methods=["GET"])
+@flask_login.login_required
 def songs():
     return render_template("songs.html", current_user=flask_login.current_user)
 
