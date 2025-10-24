@@ -8,6 +8,9 @@
         {% include 'navigation_bar.html' %}
         <div id="body">
             <p>{{ error_num }} - {{ error }}</p>
+            {% if error_num=="401" %}
+            <p>Please sign in!</p>
+            {% endif %}
         </div>
         {% include 'footer.html' %}
 	</body>
