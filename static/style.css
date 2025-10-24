@@ -12,16 +12,12 @@ a:hover {
     text-decoration: underline;
 }
 
-#navibar a {
-    color: #CFDFFC;
-}
-
 h1 {
     color: #ff6600;
     font-weight: bold;
 }
 
-#navibar h1 a {
+#navibar #uppernav h1 a {
     color: #F60;
 }
 
@@ -31,7 +27,8 @@ h1 {
     margin-right: 6px;
 }
 
-#navibar a {
+#navibar #uppernav a {
+    color: #CFDFFC;
     text-decoration: none;
 }
 
@@ -39,6 +36,15 @@ h1 {
     margin-top: 8px;
     margin-bottom: 8px;
     font-size: 10pt;
+}
+
+.crumb {
+    padding: 5px;
+}
+
+#crumb_none {
+    color: #999999;
+    text-decoration: none;
 }
 
 body {
