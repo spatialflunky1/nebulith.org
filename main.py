@@ -67,35 +67,35 @@ def logout():
     return redirect("/")
 
 # Set default routes
-@app.route("/", methods=["GET", "POST"])
+@app.route("/", methods=["GET"])
 def home():
     return render_template("index.html", current_user=flask_login.current_user)
 
-@app.route("/Downloads", methods=["GET", "POST"])
+@app.route("/Downloads", methods=["GET"])
 def downloads():
     return render_template("downloads.html", current_user=flask_login.current_user)
 
-@app.route("/IRC", methods=["GET", "POST"])
+@app.route("/IRC", methods=["GET"])
 def IRC():
     return render_template("irc.html", current_user=flask_login.current_user)
 
-@app.route("/Blog", methods=["GET", "POST"])
+@app.route("/Blog", methods=["GET"])
 def blog():
     return render_template("blog.html", current_user=flask_login.current_user)
 
-@app.route("/Forum", methods=["GET", "POST"])
+@app.route("/Forum", methods=["GET"])
 def forum():
     return render_template("forum.html", current_user=flask_login.current_user)
 
-@app.route("/Music", methods=["GET", "POST"])
+@app.route("/Music", methods=["GET"])
 def music():
     return render_template("music.html", current_user=flask_login.current_user)
 
-@app.route("/Music/Albums", methods=["GET", "POST"])
+@app.route("/Music/Albums", methods=["GET"])
 def albums():
     return render_template("albums.html", current_user=flask_login.current_user)
 
-@app.route("/Music/Songs", methods=["GET", "POST"])
+@app.route("/Music/Songs", methods=["GET"])
 def songs():
     return render_template("songs.html", current_user=flask_login.current_user)
 
