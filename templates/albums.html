@@ -8,6 +8,8 @@
         <script src="{{ url_for('static', filename='album.js') }}?1"></script>
     </head>
     <body>
+        {% include 'navigation_bar.html' %}
         <table id="content"></table>
+        {% include 'footer.html' %}
     </body>
 </html>
