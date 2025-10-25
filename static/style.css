@@ -88,6 +88,32 @@ body {
 #login_nav {
     margin-left: auto;
     padding-right: 8px;
+    flex-direction: column;
+}
+
+#login_nav a {
+    margin-top: 19.5px;
+}
+
+#account_dropdown {
+    display: none;
+    position: absolute;
+    margin-top: 58.5px;
+    background-color: #808080a3;
+    margin-right: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-bottom-left-radius: 16px;
+}
+
+#account_dropdown ul {
+    list-style: none;
+    padding: 0;
+    padding-bottom: 4px;
+}
+
+#login_nav:hover #account_dropdown {
+    display: block;
 }
 
 #subpages a {

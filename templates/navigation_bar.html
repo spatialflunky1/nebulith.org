@@ -14,6 +14,11 @@
         <div id="login_nav">
             {% if current_user.name %}
             <a>{{ current_user.name }}</a>
+            <div id="account_dropdown">
+                <ul>
+                    <li><a href="/Logout">Logout</a></li>
+                </ul>
+            </div>
             {% else %}
             <a href="/Login">Login</a>
             {% endif %}
