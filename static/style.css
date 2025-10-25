@@ -12,8 +12,11 @@ a:hover {
     text-decoration: underline;
 }
 
-h1 {
+h1, h2, #footer p {
     color: #ff6600;
+}
+
+h1 {
     font-weight: bold;
 }
 
@@ -72,6 +75,19 @@ body {
 
 #title, #breadcrumb p, #body, #left-foot {
     margin-left: 8px;
+}
+
+#left-foot {
+    padding-left: 7px;
+}
+
+#left-foot h2 {
+    margin-top: 0;
+}
+
+#left-foot-text * {
+    margin: 0;
+    font-size: 10.5pt;
 }
 
 #breadcrumb {
