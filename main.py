@@ -18,8 +18,8 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 Minify(app=app, html=True, js=True, cssless=True)
 
 # Mock user DB
-# TODO: REMOVE THIS IMMEDIATELY
-users = {"a@example.com": {"username": "Jake", "password": "123"}}
+# TODO: Switch this with a real database
+users = { }
 
 # Define empty class to store user information at runtime
 class User(flask_login.UserMixin):
