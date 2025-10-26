@@ -73,6 +73,14 @@ def logout():
 def home():
     return render_template("index.html", current_user=flask_login.current_user)
 
+@app.route("/About", methods=["GET"])
+def about():
+    return render_template("about.html", current_user=flask_login.current_user)
+
+@app.route("/Contact", methods=["GET"])
+def contact():
+    return render_template("contact.html", current_user=flask_login.current_user)
+
 @app.route("/Downloads", methods=["GET"])
 def downloads():
     return render_template("downloads.html", current_user=flask_login.current_user)
