@@ -77,6 +77,10 @@ body {
     margin-left: 8px;
 }
 
+#body {
+    margin-bottom: 141px;
+}
+
 #left-foot {
     padding-left: 7px;
 }
