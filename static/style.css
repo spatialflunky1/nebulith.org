@@ -88,6 +88,7 @@ body {
 #left-foot-text * {
     margin: 0;
     font-size: 10.5pt;
+    display: inline;
 }
 
 #breadcrumb {
