@@ -21,10 +21,11 @@
                     </div>
                     <div class="section" id="section-tr">
                         <div class="section-title">
-                            <p>Unusued Box</p>
+                            <p>Featured Image/Gif</p>
                         </div>
                         <div class="section-body">
-                            <p>Body</p>
+                            <img id="ft-image" src="{{ url_for('static', filename=ft_image) }}">
+                            <p>{{ ft_image_desc_short }}</p>
                         </div>
                     </div>
                 </div>

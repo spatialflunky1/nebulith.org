@@ -9,6 +9,7 @@ import flask_login
 import os
 import github
 from mutagen import mp3, File
+import featured_image
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'f203f9m20doimpaops&*(@MD'
@@ -71,7 +72,17 @@ def logout():
 # Set default routes
 @app.route("/", methods=["GET"])
 def home():
-    return render_template("index.html", current_user=flask_login.current_user)
+    # Get featured photo
+    latest_date = featured_image.get_latest_date()
+    fti_descShrt = ""
+    try:
+        with open("static/FeaturedPhoto/"+latest_date+".descShrt.txt", "r") as file:
+            fti_descShrt = file.read()
+    except Exception as e:
+        print(f"Error: {e}")
+    return render_template("index.html", current_user=flask_login.current_user, 
+                                         ft_image="FeaturedPhoto/"+latest_date+".thumb.png",
+                                         ft_image_desc_short=fti_descShrt)
 
 @app.route("/About", methods=["GET"])
 def about():
