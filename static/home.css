@@ -55,6 +55,10 @@ h2 {
     margin: 0;
 }
 
+.section-header, .section-subheader {
+    text-shadow: 0.1em 0.1em 0.3em black;
+}
+
 small {
     color: #CFDFFC;
     font-size: 65%;
