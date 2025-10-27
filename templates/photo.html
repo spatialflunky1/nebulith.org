@@ -7,7 +7,44 @@
     <body>
         {% include 'navigation_bar.html' %}
         <div id="body">
-            <p>NOT YET IMPLEMENTED</p>
+            <div>
+                <img src="{{ url_for('static', filename='FeaturedPhoto/'+ft_image) }}" alt="{{ ft_image_desc_short }}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Image Name</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Image Size</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Image Resolution</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Date</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Location</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Taken By</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>{{ ft_image_desc_extended }}</p>
         </div>
         {% include 'footer.html' %}
 	</body>

@@ -81,7 +81,7 @@ def home():
     except Exception as e:
         print(f"Error: {e}")
     return render_template("index.html", current_user=flask_login.current_user, 
-                                         ft_image="FeaturedPhoto/"+latest_date+".thumb.png",
+                                         ft_image=latest_date+".thumb.png",
                                          ft_image_desc_short=fti_descShrt)
 
 @app.route("/About", methods=["GET"])
