@@ -35,11 +35,12 @@ h2 {
     border-style: solid;
     border-color: #777788;
     margin: 15px;
+    background-color: #2D2B2B;
 }
 
 .section-title {
     border-bottom: 1px solid #777788;
-    background-color: black;
+    background-color: #060606;
 }
 
 .section-title p {
