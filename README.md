@@ -12,7 +12,8 @@ It was apparent that development on the old spatialflunky.one had stagnated and 
 - [x] Integrate a login system
 - [ ] Integrate the login system with a real database
 - [x] Create about page
-- [ ] Add content to the homepage
+- [x] Add content to the homepage
+- [ ] Create photo gallery
 - [ ] Completely rework "downloads" page
 - [ ] Create forum
 - [ ] Create blog

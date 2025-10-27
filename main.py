@@ -109,6 +109,14 @@ def blog():
 def forum():
     return render_template("forum.html", current_user=flask_login.current_user)
 
+@app.route("/Gallery", methods=["GET"])
+def gallery():
+    return render_template("gallery.html", current_user=flask_login.current_user)
+
+@app.route("/Gallery/Photo", methods=["GET"])
+def photo():
+    return render_template("photo.html", current_user=flask_login.current_user)
+
 @app.route("/Music", methods=["GET"])
 @flask_login.login_required
 def music():
