@@ -14,6 +14,7 @@ h1, h2, #footer p {
 
 h1 {
     font-weight: bold;
+    font-size: 24pt;
 }
 
 #navibar #uppernav h1 a {

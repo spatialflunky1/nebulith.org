@@ -8,6 +8,10 @@ td {
     padding: 5px;
 }
 
+h2 {
+    font-size: 18pt;
+}
+
 .ft-odd:hover, .ft-even:hover {
     background-color: #474747;
 }
@@ -48,6 +52,12 @@ td {
 
 .section p {
     margin: 0;
+}
+
+small {
+    color: #CFDFFC;
+    font-size: 65%;
+    font-weight: normal;
 }
 
 #section-tl {
