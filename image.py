@@ -24,21 +24,21 @@ def get_featured_latest_date():
     return get_featured_dates()[-1]
 
 def get_image_file_details(filepath):
-    details = ["" for i in range(3)]
-    details[0] = ["" for i in range(2)]
-    details[1] = humanize.naturalsize(os.path.getsize(filepath))
+    details = ["" for i in range(3)] 
+    details[0] = humanize.naturalsize(os.path.getsize(filepath))
+    details[1] = ["" for i in range(2)]
     try:
         with Image.open(filepath) as img:
             exif = img._getexif()
             if exif:
                 for i,j in exif.items():
                     if TAGS.get(i,i) == "ExifImageWidth":
-                        details[0][0] = str(j)
+                        details[1][0] = str(j)
                     if TAGS.get(i,i) == "ExifImageHeight":
-                        details[0][1] = str(j)
+                        details[1][1] = str(j)
                     if TAGS.get(i,i) == "DateTimeOriginal":
                         details[2] = str(j)
-                details[0] = "x".join(details[0])
+                details[1] = "x".join(details[1])
                 return details
             else:
                 print(f"No EXIF data found for image: {filepath}")
