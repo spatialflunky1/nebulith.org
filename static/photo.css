@@ -1,3 +1,11 @@
+table {
+    height: fit-content;
+}
+
 #image {
     width: 75%;
+}
+
+#image-container {
+    display: flex;
 }
