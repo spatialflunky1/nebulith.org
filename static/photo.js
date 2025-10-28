@@ -69,14 +69,9 @@ function loadImage() {
 }
 
 $(document).ready(function() {
+    $("#image").on("load", function() {
+        console.log("here");
+        fix_footer_position();
+    });
     loadImage();
 });
-
-$("img").on("load", function() {
-    fix_footer_position();
-}).each(function() {
-    if(this.complete) {
-        $(this).trigger('load'); // For jQuery >= 3.0 
-    }
-});
-
