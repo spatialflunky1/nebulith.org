@@ -12,6 +12,10 @@ tr {
 }
 
 #image {
+    width: 100%;
+}
+
+#image_link {
     width: 60%;
     min-width: 60%;
     margin-right: 12px;

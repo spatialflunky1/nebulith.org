@@ -37,6 +37,7 @@ function getParameterByName(name, url = window.location.href) {
 // [path,size,resolution,date,location,takenby,descshort,desclong]
 function setImage(image_details) {
     var imageElem = document.getElementById("image");
+    var imageLink = document.getElementById("image_link");
     var imageNameCol = document.getElementById("image_name");
     var imageSizeCol = document.getElementById("image_size");
     var imageResCol = document.getElementById("image_resolution");
@@ -46,6 +47,7 @@ function setImage(image_details) {
     var imageDescription = document.getElementById("image_description");
 
     imageElem.src = "/static/Photos/"+image_details[0];
+    imageLink.href = "/static/Photos/"+image_details[0];
     imageElem.alt = image_details[6];
     imageNameCol.textContent = image_details[0];
     imageSizeCol.textContent = image_details[1];
