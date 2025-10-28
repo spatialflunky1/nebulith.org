@@ -2,13 +2,16 @@
 <html>
     <head>
 	{% include 'head.html' %}
+        {% include 'flask.html' %}
+        <link href="{{ url_for('static', filename='photo.css') }}" rel="stylesheet" type="text/css">
+        <script src="{{ url_for('static', filename='photo.js') }}"></script>
         <title>Photo</title>
     </head>
     <body>
         {% include 'navigation_bar.html' %}
         <div id="body">
             <div>
-                <img src="{{ url_for('static', filename='FeaturedPhoto/'+ft_image) }}" alt="{{ ft_image_desc_short }}">
+                <img id="image" src="" alt="">
                 <table>
                     <thead>
                         <tr>
@@ -19,32 +22,32 @@
                     <tbody>
                         <tr>
                             <td>Image Name</td>
-                            <td></td>
+                            <td id="image_name">/image.png</td>
                         </tr>
                         <tr>
                             <td>Image Size</td>
-                            <td></td>
+                            <td id="image_size"></td>
                         </tr>
                         <tr>
                             <td>Image Resolution</td>
-                            <td></td>
+                            <td id="image_resolution"></td>
                         </tr>
                         <tr>
                             <td>Date</td>
-                            <td></td>
+                            <td id="image_date"></td>
                         </tr>
                         <tr>
                             <td>Location</td>
-                            <td></td>
+                            <td id="image_location"></td>
                         </tr>
                         <tr>
                             <td>Taken By</td>
-                            <td></td>
+                            <td id="image_takenby"></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <p>{{ ft_image_desc_extended }}</p>
+            <p id="image_description"></p>
         </div>
         {% include 'footer.html' %}
 	</body>

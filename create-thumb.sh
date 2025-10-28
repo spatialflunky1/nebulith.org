@@ -7,5 +7,5 @@ if [[ ${DATE} == "" ]]; then
     exit 1
 fi
 
-magick static/FeaturedPhoto/${DATE}.png -resize 800x static/FeaturedPhoto/${DATE}.thumb.png
+magick static/Photos/FeaturedPhoto/${DATE}/image.png -resize 800x static/Photos/FeaturedPhoto/${DATE}/thumbnail.png
 # magick input.jpg -auto-orient output.png

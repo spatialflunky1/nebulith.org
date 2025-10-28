@@ -9,7 +9,7 @@ import flask_login
 import os
 import github
 from mutagen import mp3, File
-import featured_image
+import image
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'f203f9m20doimpaops&*(@MD'
@@ -73,15 +73,15 @@ def logout():
 @app.route("/", methods=["GET"])
 def home():
     # Get featured photo
-    latest_date = featured_image.get_latest_date()
+    latest_date = image.get_featured_latest_date()
     fti_descShrt = ""
     try:
-        with open("static/FeaturedPhoto/"+latest_date+".descShrt.txt", "r") as file:
+        with open("static/Photos/FeaturedPhoto/"+latest_date+"/descriptionShort.txt", "r") as file:
             fti_descShrt = file.read()
     except Exception as e:
         print(f"Error: {e}")
     return render_template("index.html", current_user=flask_login.current_user, 
-                                         ft_image=latest_date+".thumb.png",
+                                         ft_date=latest_date,
                                          ft_image_desc_short=fti_descShrt)
 
 @app.route("/About", methods=["GET"])
@@ -176,6 +176,9 @@ def handle_connection(page):
             send(content)
     elif page[0]=="downloads":
         send(github.get_repo_names())
+    elif page[0]=="image":
+        details = image.get_image_details(page[1])
+        send(details)
 
 if __name__ == '__main__':
     socketio.run(app, host="localhost", port=500, debug=True)

@@ -24,8 +24,8 @@
                             <p>Featured Image/GIF</p>
                         </div>
                         <div class="section-body">
-                            <a href="/Gallery/Photo"><img id="ft-image" src="{{ url_for('static', filename='FeaturedPhoto/'+ft_image) }}"></a>
-                            <a href="/Gallery/Photo"><p>{{ ft_image_desc_short }}</p></a>
+                            <a href="/Gallery/Photo?image=FeaturedPhoto/{{ ft_date }}"><img id="ft-image" src="{{ url_for('static', filename='Photos/FeaturedPhoto/'+ft_date+'/thumbnail.png') }}"></a>
+                            <a href="/Gallery/Photo?image=FeaturedPhoto/{{ ft_date }}"><p>{{ ft_image_desc_short }}</p></a>
                         </div>
                     </div>
                 </div>
