@@ -37,7 +37,8 @@ def get_image_file_details(filepath):
                     if TAGS.get(i,i) == "ExifImageHeight":
                         details[1][1] = str(j)
                     if TAGS.get(i,i) == "DateTimeOriginal":
-                        details[2] = str(j)
+                        details[2] = datetime.strptime(str(j), "%Y:%m:%d %H:%M:%S")
+                        details[2] = datetime.strftime(details[2], "%m/%d/%Y %-I:%M:%S %p")
                 details[1] = "x".join(details[1])
                 return details
             else:
@@ -50,7 +51,7 @@ def get_image_details(image):
     details = []
 
     # 0: Path
-    details.append("Photos/"+image+"/image.png")
+    details.append(""+image+"/image.png")
 
     # 1,2,3: Size, Resolution, Photo Date
     file_info = get_image_file_details("static/Photos/"+image+"/image.png")

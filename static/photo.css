@@ -4,10 +4,16 @@ table {
 
 td {
     vertical-align: top;
+    width: 150px;
+}
+
+tr {
+    height: 45px;
 }
 
 #image {
-    width: 75%;
+    width: 60%;
+    min-width: 60%;
     margin-right: 12px;
 }
 
@@ -15,4 +21,15 @@ td {
     display: flex;
     margin-left: 12px;
     margin-top: 20px;
+}
+
+#image_description {
+    width: 75%
+}
+
+#description-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
