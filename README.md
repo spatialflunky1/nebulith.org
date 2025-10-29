@@ -10,7 +10,7 @@ It was apparent that development on the old spatialflunky.one had stagnated and 
 - [x] Redesign and implement new theme based on the old (no longer used) space age theme from winworldpc.com
   - Theme can be viewed [here](https://web.archive.org/web/20160313224804/https://winworldpc.com/)
 - [x] Integrate a login system
-- [ ] Integrate the login system with a real database
+- [x] Integrate the login system with a real database
 - [x] Create about page
 - [x] Add content to the homepage
 - [ ] Create photo gallery
