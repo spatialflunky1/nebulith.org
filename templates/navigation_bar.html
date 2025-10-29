@@ -12,8 +12,8 @@
             <a href="/Gallery">Gallery</a>
         </div>
         <div id="login_nav">
-            {% if current_user.name %}
-            <a>{{ current_user.name }}</a>
+            {% if current_user.username %}
+            <a>{{ current_user.username }}</a>
             <div id="account_dropdown">
                 <ul>
                     <li><a href="/Logout">Logout</a></li>

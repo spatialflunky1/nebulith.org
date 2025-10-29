@@ -3,6 +3,9 @@ import eventlet
 eventlet.patcher.monkey_patch(select=True, socket=True)
 
 from flask import Flask, render_template, request, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.sql import text
+import db_con
 from flask_socketio import SocketIO, send
 from flask_minify import Minify
 import flask_login
@@ -13,6 +16,8 @@ import image
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'f203f9m20doimpaops&*(@MD'
+app.config['SQLALCHEMY_DATABASE_URI'] = db_con.sqlalchemy_database_uri
+db = SQLAlchemy(app)
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
@@ -23,27 +28,32 @@ Minify(app=app, html=True, js=True, cssless=True)
 users = { }
 
 # Define empty class to store user information at runtime
-class User(flask_login.UserMixin):
-    pass
+class User(flask_login.UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(254), unique=True, nullable=True)
+    username = db.Column(db.String(20), nullable=True)
+    def __init__(self, id, email, username):
+        self.id = id
+        self.email = email
+        self.username = username
 
 # Define login manager functions and login route
 @login_manager.user_loader
-def user_loader(email):
-    if email not in users:
+def user_loader(id):
+    newuser = db.session.execute(text(f"SELECT id,email,username from users where id='{id}'")).fetchone()
+    if newuser == None:
         return
-    user = User()
-    user.id = email
-    user.name = users[email]["username"]
+    user = User(newuser.id, newuser.email, newuser.username)
     return user
 
 @login_manager.request_loader
 def request_loader(request):
     email = request.form.get('email')
-    if email not in users:
+    password = request.form.get('password')
+    newuser = db.session.execute(text(f"SELECT id,email,username from users where email = '{email}' and password = '{password}'")).fetchone()
+    if newuser == None:
         return
-    user = User()
-    user.id = email
-    user.name = users[email]["username"]
+    user = User(newuser.id, newuser.email, newuser.username)
     return user
 
 @login_manager.unauthorized_handler
@@ -56,9 +66,10 @@ def login():
         return render_template("login.html", current_user=flask_login.current_user)
     else:
         email = request.form["email"]
-        if email in users and request.form["password"] == users[email]["password"]:
-            user = User()
-            user.id = email
+        password = request.form["password"]
+        newuser = db.session.execute(text(f"SELECT id,email,username from users where email = '{email}' and password = '{password}'")).fetchone()
+        if newuser != None:
+            user = User(newuser.id, newuser.email, newuser.username)
             flask_login.login_user(user)
             return redirect("/")
         else:
