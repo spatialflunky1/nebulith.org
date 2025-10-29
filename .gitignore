@@ -1,5 +1,6 @@
 # Security
 *.key
+db_con.py
 
 # Directories
 static/music/
