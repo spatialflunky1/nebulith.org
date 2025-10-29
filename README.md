@@ -19,4 +19,4 @@ It was apparent that development on the old spatialflunky.one had stagnated and 
 - [ ] Create blog
 - [ ] Create IRC
 ## Note
-Currently the login page will not function as there is no database attached to the production site.
+* You must rename db_con.example.py to db_con.py and fill out the information within
