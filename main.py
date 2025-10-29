@@ -80,6 +80,10 @@ def logout():
     flask_login.logout_user()
     return redirect("/")
 
+@app.route("/Account", methods=["GET"])
+def account():
+    return render_template("account.html", current_user=flask_login.current_user)
+
 # Set default routes
 @app.route("/", methods=["GET"])
 def home():

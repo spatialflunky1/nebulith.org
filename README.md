@@ -11,6 +11,8 @@ It was apparent that development on the old spatialflunky.one had stagnated and 
   - Theme can be viewed [here](https://web.archive.org/web/20160313224804/https://winworldpc.com/)
 - [x] Integrate a login system
 - [x] Integrate the login system with a real database
+- [ ] Create account management page
+- [ ] Create way for admin user to create new users
 - [x] Create about page
 - [x] Add content to the homepage
 - [ ] Create photo gallery

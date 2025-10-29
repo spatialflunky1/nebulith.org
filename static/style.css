@@ -132,6 +132,10 @@ body {
     padding-bottom: 4px;
 }
 
+#account_dropdown li {
+    padding-bottom: 12px;
+}
+
 #login_nav:hover #account_dropdown {
     display: block;
 }
