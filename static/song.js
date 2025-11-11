@@ -234,6 +234,8 @@ $(document).ready(function() {
     });
     socket.on('message', function(songs) {
         listSongs(songs, artist, album);
+        // Call the externally (in script.js) defined function to fix the footer
+        fix_footer_position();
         socket.disconnect();
     });
 })
