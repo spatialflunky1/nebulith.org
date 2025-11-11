@@ -236,6 +236,8 @@ $(document).ready(function() {
         listSongs(songs, artist, album);
         // Call the externally (in script.js) defined function to fix the footer
         fix_footer_position();
+        // Add the height of the songBar to the body height
+        document.body.style.height = document.body.scrollHeight + document.getElementById("songBar").scrollHeight + "px";
         socket.disconnect();
     });
 })
