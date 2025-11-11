@@ -1,0 +1,86 @@
+th {
+    border-bottom: 2px solid #DDDDDD;
+    padding: 5px;
+}
+
+td {
+    border-top: 1px solid #DDDDDD;
+    padding: 5px;
+}
+
+h2 {
+    font-size: 18pt;
+}
+
+.ft-odd:hover, .ft-even:hover {
+    background-color: #474747;
+}
+
+.ft-even {
+    background-color: #080B0D;
+}
+
+#forum-post-table {
+    text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.sections-column {
+    display: flex;
+}
+
+.section {
+    border: 1px;
+    border-style: solid;
+    border-color: #777788;
+    margin: 15px;
+    background-color: #2D2B2B;
+}
+
+.section-title {
+    border-bottom: 1px solid #777788;
+    background-color: #060606;
+}
+
+.section-title p {
+    color: #FFCC00;
+}
+
+.section-title, .section-body {
+    padding: 10px 15px;
+}
+
+.section p {
+    margin: 0;
+}
+
+.section-header, .section-subheader {
+    text-shadow: 0.1em 0.1em 0.3em black;
+}
+
+small {
+    color: #CFDFFC;
+    font-size: 65%;
+    font-weight: normal;
+}
+
+#section-tl {
+    width: 66.66666666666666%;
+}
+
+#section-tr {
+    width: 33.33333333333333%;
+}
+
+#section-bl, #section-br {
+    width: 50%;
+}
+
+#body {
+    margin: 0;
+}
+
+#ft-image {
+    width: 100%
+}

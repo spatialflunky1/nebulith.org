@@ -2,42 +2,152 @@
 import eventlet
 eventlet.patcher.monkey_patch(select=True, socket=True)
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.sql import text
+import db_con
 from flask_socketio import SocketIO, send
 from flask_minify import Minify
+import flask_login
 import os
 import github
 from mutagen import mp3, File
+import image
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret!'
+app.config['SECRET_KEY'] = 'f203f9m20doimpaops&*(@MD'
+app.config['SQLALCHEMY_DATABASE_URI'] = db_con.sqlalchemy_database_uri
+db = SQLAlchemy(app)
+login_manager = flask_login.LoginManager()
+login_manager.init_app(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 Minify(app=app, html=True, js=True, cssless=True)
 
-@app.route("/", methods=["GET", "POST"])
+# Mock user DB
+# TODO: Switch this with a real database
+users = { }
+
+# Define empty class to store user information at runtime
+class User(flask_login.UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(254), unique=True, nullable=True)
+    username = db.Column(db.String(20), nullable=True)
+    def __init__(self, id, email, username):
+        self.id = id
+        self.email = email
+        self.username = username
+
+# Define login manager functions and login route
+@login_manager.user_loader
+def user_loader(id):
+    newuser = db.session.execute(text(f"SELECT id,email,username from users where id='{id}'")).fetchone()
+    if newuser == None:
+        return
+    user = User(newuser.id, newuser.email, newuser.username)
+    return user
+
+@login_manager.request_loader
+def request_loader(request):
+    email = request.form.get('email')
+    password = request.form.get('password')
+    newuser = db.session.execute(text(f"SELECT id,email,username from users where email = '{email}' and password = '{password}'")).fetchone()
+    if newuser == None:
+        return
+    user = User(newuser.id, newuser.email, newuser.username)
+    return user
+
+@login_manager.unauthorized_handler
+def unauthorized_handler():
+    return render_template("error.html", error_num="401", error="Unauthorized", current_user=flask_login.current_user)
+
+@app.route("/Login", methods=["GET", "POST"])
+def login():
+    if request.method == "GET":
+        return render_template("login.html", current_user=flask_login.current_user)
+    else:
+        email = request.form["email"]
+        password = request.form["password"]
+        newuser = db.session.execute(text(f"SELECT id,email,username from users where email = '{email}' and password = '{password}'")).fetchone()
+        if newuser != None:
+            user = User(newuser.id, newuser.email, newuser.username)
+            flask_login.login_user(user)
+            return redirect("/")
+        else:
+            return render_template("login.html", error="Incorrect email or password!", current_user=flask_login.current_user)
+
+@app.route("/Logout", methods=["GET"])
+def logout():
+    flask_login.logout_user()
+    return redirect("/")
+
+@app.route("/Account", methods=["GET"])
+def account():
+    return render_template("account.html", current_user=flask_login.current_user)
+
+# Set default routes
+@app.route("/", methods=["GET"])
 def home():
-    return render_template("index.html")
+    # Get featured photo
+    latest_date = image.get_featured_latest_date()
+    fti_descShrt = ""
+    try:
+        with open("static/Photos/FeaturedPhoto/"+latest_date+"/descriptionShort.txt", "r") as file:
+            fti_descShrt = file.read()
+    except Exception as e:
+        print(f"Error: {e}")
+    return render_template("index.html", current_user=flask_login.current_user, 
+                                         ft_date=latest_date,
+                                         ft_image_desc_short=fti_descShrt)
 
-@app.route("/Downloads", methods=["GET", "POST"])
+@app.route("/About", methods=["GET"])
+def about():
+    return render_template("about.html", current_user=flask_login.current_user)
+
+@app.route("/Contact", methods=["GET"])
+def contact():
+    return render_template("contact.html", current_user=flask_login.current_user)
+
+@app.route("/Downloads", methods=["GET"])
 def downloads():
-    return render_template("downloads.html")
+    return render_template("downloads.html", current_user=flask_login.current_user)
 
-@app.route("/Blog", methods=["GET", "POST"])
+@app.route("/IRC", methods=["GET"])
+@flask_login.login_required
+def IRC():
+    return render_template("irc.html", current_user=flask_login.current_user)
+
+@app.route("/Blog", methods=["GET"])
 def blog():
-    return render_template("blog.html")
+    return render_template("blog.html", current_user=flask_login.current_user)
 
-@app.route("/Music", methods=["GET", "POST"])
+@app.route("/Forum", methods=["GET"])
+def forum():
+    return render_template("forum.html", current_user=flask_login.current_user)
+
+@app.route("/Gallery", methods=["GET"])
+def gallery():
+    return render_template("gallery.html", current_user=flask_login.current_user)
+
+@app.route("/Gallery/Photo", methods=["GET"])
+def photo():
+    return render_template("photo.html", current_user=flask_login.current_user)
+
+@app.route("/Music", methods=["GET"])
+@flask_login.login_required
 def music():
-    return render_template("music.html")
+    return render_template("music.html", current_user=flask_login.current_user)
 
-@app.route("/Music/Albums", methods=["GET", "POST"])
+@app.route("/Music/Albums", methods=["GET"])
+@flask_login.login_required
 def albums():
-    return render_template("albums.html")
+    return render_template("albums.html", current_user=flask_login.current_user)
 
-@app.route("/Music/Songs", methods=["GET", "POST"])
+@app.route("/Music/Songs", methods=["GET"])
+@flask_login.login_required
 def songs():
-    return render_template("songs.html")
+    return render_template("songs.html", current_user=flask_login.current_user)
 
+# Dynamic SocketIO content
 @socketio.on('message', namespace="/")
 def handle_connection(page):
     print(page)
@@ -81,6 +191,9 @@ def handle_connection(page):
             send(content)
     elif page[0]=="downloads":
         send(github.get_repo_names())
+    elif page[0]=="image":
+        details = image.get_image_details(page[1])
+        send(details)
 
 if __name__ == '__main__':
     socketio.run(app, host="localhost", port=500, debug=True)

@@ -234,6 +234,21 @@ $(document).ready(function() {
     });
     socket.on('message', function(songs) {
         listSongs(songs, artist, album);
+        var songbar = document.getElementById("songBar");
+        // Call the externally (in script.js) defined function to fix the footer
+        if (fix_footer_position() == false) {
+            // Set the song bar on top of the footer when the page is short
+            songbar.style.position = "absolute";
+            songbar.style.bottom = "141px";
+        }
+        else {
+            // Set the song bar to follow the page when it is extended
+            songbar.style.position = "fixed";
+            songbar.style.bottom = "0";
+        }
+        // Add the height of the songBar to the body height
+        //   - This process can be done regardless of the footer position
+        document.body.style.height = document.body.scrollHeight + document.getElementById("songBar").scrollHeight + "px";
         socket.disconnect();
     });
 })

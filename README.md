@@ -5,13 +5,21 @@ Nebulith or nebulith.org is a complete rebuild and rebranding of my previous web
 It was apparent that development on the old spatialflunky.one had stagnated and was going nowhere. This site will focus on many of the same goals and expand on them by implementing a greater range of functionality (ex. adding more projects) with a completely renewed design and style.
 ## Todo list for rebuild (backend specific):
 - [x] Move spatialflunky.one source code to this repository
-- [ ] Refactor Flask HTML templates to be efficient and modular (ex. split HTML content into parts to be assembled)
+- [x] Refactor Flask HTML templates to be efficient and modular (ex. split HTML content into parts to be assembled)
 ## Todo list for new features:
-- [ ] Redesign and implement new theme based on the old (no longer used) space age theme from winworldpc.com
+- [x] Redesign and implement new theme based on the old (no longer used) space age theme from winworldpc.com
   - Theme can be viewed [here](https://web.archive.org/web/20160313224804/https://winworldpc.com/)
-  - New layout will have an actual header and footer for a more standardized organization
-- [ ] Create about page
+- [x] Integrate a login system
+- [x] Integrate the login system with a real database
+- [ ] Create account management page
+- [ ] Create way for admin user to create new users
+- [x] Create about page
+- [x] Add content to the homepage
+- [ ] Create photo gallery
 - [ ] Completely rework "downloads" page
-- [ ] Research and design a system for user and admin accounts over Python Flask, mainly for the features below
-- [ ] Create forum/blog
+- [ ] Change music page to work better with the breadcrumb 
+- [ ] Create forum
+- [ ] Create blog
 - [ ] Create IRC
+## Note
+* You must rename db\_con.example.py to db\_con.py and fill out the information within

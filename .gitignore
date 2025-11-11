@@ -1,7 +1,9 @@
 # Security
 *.key
+db_con.py
 
 # Directories
 static/music/
 static/r_music/
+static/Photos
 __pycache__/

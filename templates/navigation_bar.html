@@ -1,0 +1,31 @@
+<div id="navibar">
+    <div id="uppernav">
+        <div id="title">
+            <h1><a href="/">Nebulith</a></h1>
+        </div>
+        <div id="subpages">
+            <a href="/Music">Music</a>
+            <a href="/Downloads">Downloads</a>
+            <a href="/IRC">Private IRC</a>
+            <a href="/Blog">Blog</a>
+            <a href="/Forum">Forum</a>
+            <a href="/Gallery">Gallery</a>
+        </div>
+        <div id="login_nav">
+            {% if current_user.username %}
+            <a>{{ current_user.username }}</a>
+            <div id="account_dropdown">
+                <ul>
+                    <li><a href="/Account">Account</a></li>
+                    <li><a href="/Logout">Logout</a></li>
+                </ul>
+            </div>
+            {% else %}
+            <a href="/Login">Login</a>
+            {% endif %}
+        </div>
+    </div>
+    <div id="breadcrumb">
+        <p><a class="crumb" id="crumb_none">Home</a></p>
+    </div>
+</div>

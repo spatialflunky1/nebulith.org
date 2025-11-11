@@ -39,38 +39,38 @@ img, button {
     background-color: rgb(140, 140, 150);
 }
 
-p {
+table p {
     color: white;
     font-size: large;
     font-weight: bold;
 }
 
 #songBar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    /* style when the page is extended by the list
+     * position: fixed;
+     * bottom: 0;
+     */
+    position: absolute;
+    bottom: 141px;
+    width: calc(100% - 6px);
     background-color: black;
-    width: calc(100% - 6px);;
     height: 100px;
     border-style: solid;
     border-color: white;
+    margin-left: -8px;
 }
 
 #playButton {
-    position: absolute;
-    top: 50%;
-    margin-top: -42px;
+    margin-top: 8px;
     margin-left: 10px;
     height: 83px;
     width: 83px;
 }
 
 #songList {
-    float: left;
     border-style: solid;
     border-color: white;
     color: white;
-    margin-top: 42px;
     width: 100%;
     font-size: larger;
     border-collapse: collapse;
@@ -116,7 +116,7 @@ th {
 }
 
 #positionBar {
-    margin-top: 75px;
+    margin-top: -27px;
     width: calc(100% - 140px);
     margin-left: 115px;
 }
@@ -162,4 +162,9 @@ th {
 
 #slidecontainer, #volume {
     width: 200px;
+}
+
+#container {
+    width: fit-content;
+    margin: auto;
 }

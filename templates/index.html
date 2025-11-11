@@ -2,23 +2,122 @@
 <html>
     <head>
 	{% include 'head.html' %}
+        <link href="{{ url_for('static', filename='home.css') }}" rel="stylesheet" type="text/css">
         <title>A Flunky Homapage</title>
     </head>
     <body>
-        <div id="title"><h1><a href="/"><img class="logo" alt="Spatialflunky1 logo" src="{{ url_for('static', filename='Assets/logo.png') }}"></a><em class="titleText">patialflunky1</em></h1></div>
-        <div id="container">
-            <div id="topnav">
-                <h1><em>Homepage</em></h1>
+        {% include 'navigation_bar.html' %}
+        <div id="body">
+            <div id="sections">
+                <div class="sections-column">
+                    <div class="section" id="section-tl">
+                        <div class="section-title">
+                            <p>Home</p>
+                        </div>
+                        <div class="section-body">
+                            <h2 class="section-header">Nebulith <small><i>A flunky website</i></small></h2>
+                            <p>Welcome to nebulith!</p>
+                        </div>
+                    </div>
+                    <div class="section" id="section-tr">
+                        <div class="section-title">
+                            <p>Featured Image/GIF</p>
+                        </div>
+                        <div class="section-body">
+                            <a href="/Gallery/Photo?image=FeaturedPhoto/{{ ft_date }}"><img id="ft-image" src="{{ url_for('static', filename='Photos/FeaturedPhoto/'+ft_date+'/thumbnail.png') }}"></a>
+                            <a href="/Gallery/Photo?image=FeaturedPhoto/{{ ft_date }}"><p>{{ ft_image_desc_short }}</p></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sections-column">
+                    <div class="section" id="section-bl">
+                        <div class="section-title">
+                            <p>Blog Posts</p>
+                        </div>
+                        <div class="section-body">
+                            <p>No posts yet! Blog functionality creation: TBD (soon!)</p>
+                            <p>{{ temp }}</p>
+                        </div>
+                    </div>
+                    <div class="section" id="section-br">
+                        <div class="section-title">
+                            <p>Latest Forum Posts</p>
+                        </div>
+                        <table id="forum-post-table">
+                            <thead>
+                                <tr>
+                                    <th>Topic</th>
+                                    <th>Replies</th>
+                                    <th>Views</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="ft-even">
+                                    <td><a>Forum functionality creation: TBD (also soon!)</a></td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr class="ft-odd">
+                                    <td>​</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="ft-even">
+                                    <td>​</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="ft-odd">
+                                    <td>​</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="ft-even">
+                                    <td>​</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="ft-odd">
+                                    <td>​</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="ft-even">
+                                    <td>​</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="ft-odd">
+                                    <td>​</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="ft-even">
+                                    <td>​</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="ft-odd">
+                                    <td>​</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="ft-even">
+                                    <td>​</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="ft-odd">
+                                    <td>​</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-        </div> 
-        <div id="sidebar">
-            <br>
-            <table id="sidebar_table">
-                <tr><td><a href="/Downloads">Downloads</a></td></tr>
-           <!-- <tr><td><a href="/Music">Music</a></td></tr> -->
-           <!-- <tr><td><a href="/Music?robot=ryan">Ryan's Music</a></td></tr> -->
-                <tr><td><a href="https://www.youtube.com/c/spatialflunky1">YouTube</a></td></tr>
-            </table>
         </div>
+        {% include 'footer.html' %}
 	</body>
 </html>

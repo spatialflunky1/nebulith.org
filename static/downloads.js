@@ -1,5 +1,5 @@
 function addDownloads(repos) {
-    var table = document.getElementById("sidebar_table");
+    var table = document.getElementById("download_table");
     table.innerHTML = "";
     for (const repo of repos) {
         var data = table.insertRow().insertCell();

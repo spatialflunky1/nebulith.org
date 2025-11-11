@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	{% include 'head.html' %}
+        {% include 'flask.html' %}
+        <link href="{{ url_for('static', filename='photo.css') }}" rel="stylesheet" type="text/css">
+        <script src="{{ url_for('static', filename='photo.js') }}"></script>
+        <title>Photo</title>
+    </head>
+    <body>
+        {% include 'navigation_bar.html' %}
+        <div id="body">
+            <div id="image-container">
+                <a id="image_link"><img id="image" src="" alt=""></a>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Image Name</td>
+                            <td id="image_name">/image.png</td>
+                        </tr>
+                        <tr>
+                            <td>Image Size</td>
+                            <td id="image_size"></td>
+                        </tr>
+                        <tr>
+                            <td>Image Resolution</td>
+                            <td id="image_resolution"></td>
+                        </tr>
+                        <tr>
+                            <td>Date</td>
+                            <td id="image_date"></td>
+                        </tr>
+                        <tr>
+                            <td>Location</td>
+                            <td id="image_location"></td>
+                        </tr>
+                        <tr>
+                            <td>Taken By</td>
+                            <td id="image_takenby"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="description-container">
+                <p id="image_description"></p>
+            </div>
+        </div>
+        {% include 'footer.html' %}
+	</body>
+</html>
