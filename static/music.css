@@ -48,18 +48,16 @@ table p {
 #songBar {
     position: fixed;
     bottom: 0;
-    left: 0;
+    width: calc(100% - 6px);
     background-color: black;
-    width: calc(100% - 6px);;
     height: 100px;
     border-style: solid;
     border-color: white;
+    margin-left: -8px;
 }
 
 #playButton {
-    position: absolute;
-    top: 50%;
-    margin-top: -42px;
+    margin-top: 8px;
     margin-left: 10px;
     height: 83px;
     width: 83px;
@@ -114,7 +112,7 @@ th {
 }
 
 #positionBar {
-    margin-top: 75px;
+    margin-top: -27px;
     width: calc(100% - 140px);
     margin-left: 115px;
 }

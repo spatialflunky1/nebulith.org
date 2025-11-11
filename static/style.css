@@ -156,6 +156,7 @@ body {
     display: inline-flex;
     height: 140px;
     align-items: center;
+    z-index: -1; /* for when position: relative */
 }
 
 #right-foot {

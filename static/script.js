@@ -12,7 +12,7 @@ function fix_footer_position() {
     var navibar = document.getElementById("navibar");
     var footer = document.getElementById("footer");
     if (body_div.offsetHeight > (window.innerHeight - navibar.offsetHeight - footer.offsetHeight)) {
-        footer.style.position = "static";
+        footer.style.position = "relative";
         // Set the margin to be acceptable with this positioning
         body_div.style.marginBottom = "16px";
     }
