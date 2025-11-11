@@ -2,6 +2,7 @@ function fix_footer_position() {
     //
     // Fix footer position
     //
+    // Returns if the page is extended
 
     // Get innner body div
     var body_div = document.getElementById("body");
@@ -15,12 +16,14 @@ function fix_footer_position() {
         footer.style.position = "relative";
         // Set the margin to be acceptable with this positioning
         body_div.style.marginBottom = "16px";
+        return true;
     }
     // This function goes both ways so it should set it back otherwise
     else {
         footer.style.position = "absolute";
         // Set the margin to be acceptable with this positioning
         body_div.style.marginBottom = "141px";
+        return false;
     }
 }
 

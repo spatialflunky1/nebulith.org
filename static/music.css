@@ -46,8 +46,12 @@ table p {
 }
 
 #songBar {
-    position: fixed;
-    bottom: 0;
+    /* style when the page is extended by the list
+     * position: fixed;
+     * bottom: 0;
+     */
+    position: absolute;
+    bottom: 141px;
     width: calc(100% - 6px);
     background-color: black;
     height: 100px;
