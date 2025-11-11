@@ -17,8 +17,9 @@ It was apparent that development on the old spatialflunky.one had stagnated and 
 - [x] Add content to the homepage
 - [ ] Create photo gallery
 - [ ] Completely rework "downloads" page
+- [ ] Change music page to work better with the breadcrumb 
 - [ ] Create forum
 - [ ] Create blog
 - [ ] Create IRC
 ## Note
-* You must rename db_con.example.py to db_con.py and fill out the information within
+* You must rename db\_con.example.py to db\_con.py and fill out the information within
