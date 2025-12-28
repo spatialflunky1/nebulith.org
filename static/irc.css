@@ -8,3 +8,8 @@
 #new_message {
     width: calc( 100% - 7px );
 }
+
+#messages {
+    list-style: none;
+    padding-left: 20px;
+}
