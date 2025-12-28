@@ -1,0 +1,10 @@
+#new_message_area {
+    position: absolute;
+    bottom: 150px;
+    right: 15px;
+    left: 15px;
+}
+
+#new_message {
+    width: calc( 100% - 7px );
+}
