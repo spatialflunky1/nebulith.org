@@ -3,13 +3,14 @@
     <head>
 	{% include 'head.html' %}
         <link href="{{ url_for('static', filename='irc.css') }}" rel="stylesheet" type="text/css">
+        <script src="{{ url_for('static', filename='irc.js') }}"></script>
         <title>IRC</title>
     </head>
     <body>
         {% include 'navigation_bar.html' %}
         <div id="body">
             <ul id="messages">
-                <li class="message"><p>&gt; (username) Hello</p></li>
+                <li class="message"><p class="message_text">&gt; (username) Hello</p></li>
             </ul>
             <div id="new_message_area">
                 <input id="new_message" type="text" name="new_message"/>

@@ -13,3 +13,7 @@
     list-style: none;
     padding-left: 15px;
 }
+
+.message_text {
+    margin-bottom: 7px;
+}
