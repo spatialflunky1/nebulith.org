@@ -14,11 +14,22 @@ function recieve_message(msg, username) {
     message_box.appendChild(new_message_item);
 }
 
+function check_input(message) {
+    if (message == "") {
+        return false;
+    }
+    return true;
+}
+
 $(document).ready(function() {
     $("#new_message").bind("enterKey", function(e) {
-        // TODO: input checking and sending to server
-        recieve_message($("#new_message").val(), username);
-        $("#new_message").val("");
+        // Get message from text box and input check it
+        var message = $("#new_message").val();
+        message = message.trim();
+        if (check_input(message)) {
+            recieve_message(message, username);
+            $("#new_message").val("");
+        }
     });
     $("#new_message").keyup(function(e) {
         if (e.keyCode == 13) {
