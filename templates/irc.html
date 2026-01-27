@@ -2,7 +2,11 @@
 <html>
     <head>
 	{% include 'head.html' %}
+        {% include 'flask.html' %}
         <link href="{{ url_for('static', filename='irc.css') }}" rel="stylesheet" type="text/css">
+        {% if current_user.username %}    
+        <script>var username="{{ current_user.username }}"</script>    
+        {% endif %} 
         <script src="{{ url_for('static', filename='irc.js') }}"></script>
         <title>IRC</title>
     </head>

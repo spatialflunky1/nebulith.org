@@ -13,3 +13,16 @@ function recieve_message(msg, username) {
     new_message_item.appendChild(new_message);
     message_box.appendChild(new_message_item);
 }
+
+$(document).ready(function() {
+    $("#new_message").bind("enterKey", function(e) {
+        // TODO: input checking and sending to server
+        recieve_message($("#new_message").val(), username);
+        $("#new_message").val("");
+    });
+    $("#new_message").keyup(function(e) {
+        if (e.keyCode == 13) {
+            $(this).trigger("enterKey");
+        }
+    });
+});
