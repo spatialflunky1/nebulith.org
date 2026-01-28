@@ -1,3 +1,7 @@
+///
+/// Functions
+///
+
 /**
  * recieve_message()
  * @param msg - the message recieved from the server
@@ -56,6 +60,11 @@ function check_input(msg) {
     return true;
 }
 
+
+///
+/// Entry Point
+///
+
 $(document).ready(function() {
     //
     // Connect to server
@@ -68,16 +77,17 @@ $(document).ready(function() {
     socket.on("message", function(message) {
         recieve_message(message[0], message[1]);
     });
+    socket.on("acknowledge", function() {
+        $("#new_message").val("");
+    });
 
     //
     // Bind enter key in message textbox to send a message
     //
     $("#new_message").bind("enterKey", function(e) {
-        // Get message from text box and input check it
+        // Get message from text box and send it to the server
         var message = $("#new_message").val();
-        if (send_message(message, socket)) {
-            $("#new_message").val("");
-        }
+        send_message(message, socket);
     });
     $("#new_message").keyup(function(e) {
         if (e.keyCode == 13) {

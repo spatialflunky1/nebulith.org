@@ -194,6 +194,9 @@ def handle_connection(page):
         details = image.get_image_details(page[1])
         send(details)
     elif page[0]=="irc":
+        # Acknowledge the clients message
+        emit("acknowledge", "", broadcast=False, include_self=True)
+        # Broadcast the message to every connected client
         emit("message", [page[1], flask_login.current_user.username], broadcast=True, include_self=True)
 
 if __name__ == '__main__':
