@@ -1,0 +1,19 @@
+#new_message_area {
+    position: absolute;
+    bottom: 154px;
+    right: 15px;
+    left: 15px;
+}
+
+#new_message {
+    width: calc( 100% - 7px );
+}
+
+#messages {
+    list-style: none;
+    padding-left: 15px;
+}
+
+.message_text {
+    margin-bottom: 7px;
+}

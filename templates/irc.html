@@ -2,12 +2,21 @@
 <html>
     <head>
 	{% include 'head.html' %}
+        {% include 'flask.html' %}
+        <link href="{{ url_for('static', filename='irc.css') }}" rel="stylesheet" type="text/css">
+        {% if current_user.username %}    
+        <script>var username="{{ current_user.username }}"</script>    
+        {% endif %} 
+        <script src="{{ url_for('static', filename='irc.js') }}"></script>
         <title>IRC</title>
     </head>
     <body>
         {% include 'navigation_bar.html' %}
         <div id="body">
-            <p>NOT YET IMPLEMENTED</p>
+            <ul id="messages"></ul>
+            <div id="new_message_area">
+                <input id="new_message" type="text" name="new_message"/>
+            </div>
         </div>
         {% include 'footer.html' %}
 	</body>
