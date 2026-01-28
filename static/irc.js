@@ -23,7 +23,7 @@ function recieve_message(msg, username) {
 
     // Set text and parent-child element linkage
     if (username != null) {
-        new_message.appendChild(document.createTextNode("> (" + username + ") " + msg));
+        new_message.appendChild(document.createTextNode("<" + username + "> " + msg));
     }
     else {
         new_message.appendChild(document.createTextNode("> " + msg));
