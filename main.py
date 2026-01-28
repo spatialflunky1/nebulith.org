@@ -199,5 +199,10 @@ def handle_connection(page):
         # Broadcast the message to every connected client
         emit("message", [page[1], flask_login.current_user.username], broadcast=True, include_self=True)
 
+@socketio.on('connect')
+def incoming_connection():
+    if (request.headers.get('Referer').split("/")[-1] == "IRC"):
+        emit("new_connection", flask_login.current_user.username, broadcast=True, include_self=True)
+
 if __name__ == '__main__':
     socketio.run(app, host="localhost", port=500, debug=True)

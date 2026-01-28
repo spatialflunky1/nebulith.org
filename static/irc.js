@@ -22,7 +22,12 @@ function recieve_message(msg, username) {
     new_message.setAttribute("class", "message_text");
 
     // Set text and parent-child element linkage
-    new_message.appendChild(document.createTextNode("> (" + username + ") " + msg));
+    if (username != null) {
+        new_message.appendChild(document.createTextNode("> (" + username + ") " + msg));
+    }
+    else {
+        new_message.appendChild(document.createTextNode("> " + msg));
+    }
     new_message_item.appendChild(new_message);
     message_box.appendChild(new_message_item);
 }
@@ -69,7 +74,7 @@ $(document).ready(function() {
     //
     // Connect to server
     //
-    var socket = io.connect(document.location.origin);
+    var socket = io.connect(document.location.origin, {"page": "irc"});
 
     //
     // Set event binding on receiving message from server
@@ -79,6 +84,9 @@ $(document).ready(function() {
     });
     socket.on("acknowledge", function() {
         $("#new_message").val("");
+    });
+    socket.on("new_connection", function(username) {
+        recieve_message(username + " has connected", null);
     });
 
     //
