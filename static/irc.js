@@ -1,3 +1,12 @@
+/**
+ * recieve_message()
+ * @param msg - the message recieved from the server
+ * @param username - the username that is sent from flask on page load
+ *
+ * Takes the message recieved from the server, 
+ * formats the string with the username, 
+ * and adds it to the IRC message box on the page
+ */
 function recieve_message(msg, username) {
     // Create message structure
     var message_box = document.getElementById("messages");
@@ -14,6 +23,12 @@ function recieve_message(msg, username) {
     message_box.appendChild(new_message_item);
 }
 
+/**
+ * check_input()
+ * @param message - the message recieved from the client textbox
+ *
+ * precondition: the message should = message.trim() prior to calling
+ */
 function check_input(message) {
     if (message == "") {
         return false;
