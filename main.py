@@ -6,7 +6,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import text
 import db_con
-from flask_socketio import SocketIO, send
+from flask_socketio import SocketIO, send, emit
 from flask_minify import Minify
 import flask_login
 import os
@@ -150,7 +150,6 @@ def songs():
 # Dynamic SocketIO content
 @socketio.on('message', namespace="/")
 def handle_connection(page):
-    print(page)
     if page[0]=="artists":
         if len(page)>1 and page[1]=="ryan":
             content = os.listdir("static/r_music")
@@ -194,6 +193,8 @@ def handle_connection(page):
     elif page[0]=="image":
         details = image.get_image_details(page[1])
         send(details)
+    elif page[0]=="irc":
+        emit("message", [page[1], flask_login.current_user.username], broadcast=True, include_self=True)
 
 if __name__ == '__main__':
     socketio.run(app, host="localhost", port=500, debug=True)
