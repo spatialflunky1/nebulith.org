@@ -21,6 +21,15 @@ function getParameterByName(name, url = window.location.href) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
+function set_breadcrumb_album_button() {
+    var crumbs = document.getElementById("breadcrumb").children[0].children;
+    for (var crumb of crumbs) {
+        if (crumb.text == "Albums") {
+            crumb.href += "?artist=" + getParameterByName("artist");
+        }
+    }
+}
+
 function buttonPressUp() {
     var button = document.getElementById("playButton");
     if (buttonPaused && audioStream!=null) {
@@ -224,6 +233,9 @@ $(document).ready(function() {
     indicator.onmousedown = function(){indicatorDown()};
     var volSlider = document.getElementById("volume");
     volSlider.oninput = function(){updateVol()};
+
+    // Set breadcrumb URL fix
+    set_breadcrumb_album_button();
 
     setInterval(timeUpdate, 1000);
     socket.on('connect', function() {
