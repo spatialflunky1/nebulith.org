@@ -10,12 +10,7 @@ function getParameterByName(name, url = window.location.href) {
 }
 
 function albumSelect(artist, album) {
-    if (name=="ryan") {
-        location.href = "Songs?robot=ryan&artist="+artist+"&album="+album;
-    }
-    else {
-        location.href = "Songs?artist="+artist+"&album="+album;
-    }
+    location.href = "Songs?artist="+artist+"&album="+album;
 }
 
 function listAlbums(albums, artist) {
@@ -36,9 +31,6 @@ function listAlbums(albums, artist) {
         // var album_string = album.replace(/_/g, " ")
         let btn = document.createElement("button");
         var music_url = "music";
-        if (name=="ryan") {
-            music_url = "r_music";
-        }
         btn.innerHTML = "<div><img id='cover' src='/static/"+music_url+"/"+artist+"/"+album+"/album.png'><p>"+album_string+"</p></div>"
         btn.id = "album_button";
         btn.onclick = function() {albumSelect(artist, album)};

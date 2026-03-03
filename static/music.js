@@ -11,12 +11,7 @@ function getParameterByName(name, url = window.location.href) {
 }
 
 function artistSelect(artist) {
-    if (name=="ryan") {
-        location.href = "Music/Albums?robot=ryan&artist="+artist;
-    }
-    else {
-        location.href = "Music/Albums?artist="+artist;
-    }
+    location.href = "Music/Albums?artist="+artist;
 }
 
 function listArtists(artists) {
@@ -29,9 +24,6 @@ function listArtists(artists) {
         var artist_string = artist.replace(/_/g, " ");
         let btn = document.createElement("button");
         var music_url = "music";
-        if (name=="ryan") {
-            music_url="r_music";
-        }
         btn.innerHTML = "<div><img id='cover' src='/static/"+music_url+"/"+artist+"/artist.png'><p>"+artist_string+"</p></div>"
         btn.id = "artist_button";
         btn.onclick = function() {artistSelect(artist)};

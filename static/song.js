@@ -90,9 +90,6 @@ function playSong() {
         audioStream.pause();
     }
     music_url = "music"
-    if (name=="ryan") {
-        music_url = "r_music"
-    }
     audioStream = new Audio("../../static/"+music_url+"/"+artist+"/"+album+"/track"+(currentSong+1)+".mp3");
     audioStream.volume = globalVol;
     audioStream.play();

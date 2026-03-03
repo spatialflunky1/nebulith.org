@@ -151,16 +151,10 @@ def songs():
 @socketio.on('message', namespace="/")
 def handle_connection(page):
     if page[0]=="artists":
-        if len(page)>1 and page[1]=="ryan":
-            content = os.listdir("static/r_music")
-        else:
-            content = os.listdir("static/music")
+        content = os.listdir("static/music")
         send(content)
     elif page[0]=="albums":
-        if len(page)>2 and page[2]=="ryan":
-            content = os.listdir("static/r_music/"+page[1])
-        else:
-            content = os.listdir("static/music/"+page[1])
+        content = os.listdir("static/music/"+page[1])
         content.remove("artist.png")
         send(content)
     elif page[0]=="songs":
