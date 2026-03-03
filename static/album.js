@@ -10,7 +10,7 @@ function getParameterByName(name, url = window.location.href) {
 }
 
 function albumSelect(artist, album) {
-    location.href = "Songs?artist="+artist+"&album="+album;
+    location.href = "Albums/Songs?artist="+artist+"&album="+album;
 }
 
 function listAlbums(albums, artist) {
