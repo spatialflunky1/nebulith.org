@@ -50,7 +50,7 @@ def user_loader(id):
 def request_loader(request):
     email = request.form.get('email')
     password = request.form.get('password')
-    newuser = db.session.execute(text(f"SELECT id,email,username from users where email = '{email}' and password = '{password}'")).fetchone()
+    newuser = db.session.execute(text(f"SELECT id,email,username from users where email = '{email}' and password = password('{password}')")).fetchone()
     if newuser == None:
         return
     user = User(newuser.id, newuser.email, newuser.username)
