@@ -142,7 +142,7 @@ def music():
 def albums():
     return render_template("albums.html", current_user=flask_login.current_user)
 
-@app.route("/Music/Songs", methods=["GET"])
+@app.route("/Music/Albums/Songs", methods=["GET"])
 @flask_login.login_required
 def songs():
     return render_template("songs.html", current_user=flask_login.current_user)
@@ -164,30 +164,12 @@ def handle_connection(page):
         content.remove("artist.png")
         send(content)
     elif page[0]=="songs":
-        if (len(page)>3 and page[3]=="ryan"):
-            songs = [i for i in os.listdir("static/r_music/"+page[1]+"/"+page[2]) if "mp3" in i]
-            contents = []
-            for filename in songs:
-                content = []
-                song = mp3.MP3("static/r_music/"+page[1]+"/"+page[2]+"/"+filename)
-                minutes = str(int(song.info.length) // 60)
-                seconds = int(song.info.length) % 60
-                if (seconds < 10):
-                    seconds = "0"+str(seconds)
-                else:
-                    seconds = str(seconds)
-                content.append(str(song["TIT2"]))
-                content.append(minutes)
-                content.append(seconds)
-                contents.append(content)
-            send(contents)
-        else:
-            content = open("static/music/"+page[1]+"/"+page[2]+"/song_list.csv", "r").read().split('\n')
-            for i in range(len(content)):
-                content[i] = content[i].split(",")
-            if [''] in content:
-                content.remove([''])
-            send(content)
+        content = open("static/music/"+page[1]+"/"+page[2]+"/song_list.csv", "r").read().split('\n')
+        for i in range(len(content)):
+            content[i] = content[i].split(",")
+        if [''] in content:
+            content.remove([''])
+        send(content)
     elif page[0]=="downloads":
         send(github.get_repo_names())
     elif page[0]=="image":
