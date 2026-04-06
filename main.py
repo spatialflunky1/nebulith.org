@@ -13,6 +13,7 @@ import os
 import github
 from mutagen import mp3, File
 import image
+import bcrypt
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'f203f9m20doimpaops&*(@MD'
@@ -48,11 +49,21 @@ def user_loader(id):
 
 @login_manager.request_loader
 def request_loader(request):
+    # Get data from form
     email = request.form.get('email')
-    password = request.form.get('password')
-    newuser = db.session.execute(text(f"SELECT id,email,username from users where email = '{email}' and password = password('{password}')")).fetchone()
+    password = str(request.form.get('password')).encode('utf-8') # This converts the string to a char array
+
+    # Find user from database matching email
+    newuser = db.session.execute(text(f"SELECT id,email,username from users where email = '{email}'")).fetchone()
     if newuser == None:
         return
+
+    # Check password validity (double check, already done in login method)
+    salt = bcrypt.gensalt()
+    hash = bcrypt.hashpw(password, salt)
+    if bcrypt.checkpw(password, hash) == False:
+        return
+
     user = User(newuser.id, newuser.email, newuser.username)
     return user
 
@@ -65,10 +76,15 @@ def login():
     if request.method == "GET":
         return render_template("login.html", current_user=flask_login.current_user)
     else:
+        # Get data from form and query DB
         email = request.form["email"]
-        password = request.form["password"]
-        newuser = db.session.execute(text(f"SELECT id,email,username from users where email = '{email}' and password = '{password}'")).fetchone()
-        if newuser != None:
+        password = request.form["password"].encode('utf-8') # This converts the string to a char array
+        newuser = db.session.execute(text(f"SELECT id,email,username from users where email = '{email}'")).fetchone()
+        
+        # Check password validity (double check, already done in login method)
+        salt = bcrypt.gensalt()
+        hash = bcrypt.hashpw(password, salt)
+        if newuser != None or bcrypt.checkpw(password, hash) == False:
             user = User(newuser.id, newuser.email, newuser.username)
             flask_login.login_user(user)
             return redirect("/")
