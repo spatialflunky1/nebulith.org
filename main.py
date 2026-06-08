@@ -14,6 +14,7 @@ import github
 from mutagen import mp3, File
 import image
 import bcrypt
+import csv
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'f203f9m20doimpaops&*(@MD'
@@ -174,11 +175,8 @@ def handle_connection(page):
         content.remove("artist.png")
         send(content)
     elif page[0]=="songs":
-        content = open("static/music/"+page[1]+"/"+page[2]+"/song_list.csv", "r").read().split('\n')
-        for i in range(len(content)):
-            content[i] = content[i].split(",")
-        if [''] in content:
-            content.remove([''])
+        file = open("static/music/"+page[1]+"/"+page[2]+"/song_list.csv", "r")
+        content = list(csv.reader(file))
         send(content)
     elif page[0]=="downloads":
         send(github.get_repo_names())
